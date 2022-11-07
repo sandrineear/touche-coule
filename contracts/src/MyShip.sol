@@ -13,7 +13,7 @@ contract MyShip is Ship {
     }
 
     function place(uint width, uint height) public virtual override returns (uint, uint) {
-
+        return (53 * (height-5) + 8 % width, 111 * (width/3) + 10 % height);
     }
-    
+
 }
