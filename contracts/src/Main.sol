@@ -2,6 +2,7 @@
 pragma solidity ^0.8;
 
 import './Ship.sol';
+import './MyShip.sol';
 import 'hardhat/console.sol';
 
 struct Game {
@@ -38,7 +39,7 @@ contract Main {
 
   function register(address ship) external {
     require(count[msg.sender] < 2, 'Only two ships');
-    require(used[ship], 'Ship already on the board');
+    require(!used[ship], 'Ship already on the board');
     require(index <= game.height * game.width, 'Too much ship on board');
     count[msg.sender] += 1;
     ships[index] = ship;
@@ -81,6 +82,7 @@ contract Main {
         uint newPlace = (x * game.width) + y + 1;
         x = newPlace % game.width;
         y = newPlace / game.width;
+        y = y % game.height;
       }
     }
     return (x, y);
