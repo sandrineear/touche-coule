@@ -17,12 +17,12 @@ contract MyShip is Ship {
     }
 
     function fire() public virtual override returns (uint, uint) {
-        return(pos[1].x, pos[1].y);
+        return(pos[0].x, pos[0].y);
     }
 
     function place(uint width, uint height) public virtual override returns (uint, uint) {
         
-        pos[index] = Pos(53 * (height-5) + 8 % width, 111 * (width/3) + 10 % height);
+        pos[index] = Pos((53 * (height-5) + 8) % width, (111 * (width/3) + 10) % height);
         return (pos[index].x, pos[index++].y);
     }
 
