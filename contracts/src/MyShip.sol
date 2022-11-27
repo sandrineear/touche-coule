@@ -13,7 +13,8 @@ contract MyShip is Ship {
     uint index = 0;
 
     function update(uint x, uint y) public virtual override {
-
+        pos[index].x = x;
+        pos[index++].y = y;
     }
 
     function fire() public virtual override returns (uint, uint) {
@@ -21,7 +22,6 @@ contract MyShip is Ship {
     }
 
     function place(uint width, uint height) public virtual override returns (uint, uint) {
-        
         pos[index] = Pos((53 * (height-5) + 8) % width, (111 * (width/3) + 10) % height);
         return (pos[index].x, pos[index++].y);
     }
